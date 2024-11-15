@@ -17,6 +17,7 @@
 #include "llvm/IR/Function.h"
 #include "llvm/IR/GlobalVariable.h"
 #include "llvm/IR/InstIterator.h"
+#include "llvm/IR/Intrinsics.h"
 #include "llvm/IR/Module.h"
 
 #include "llvm/Support/Casting.h"
@@ -2094,6 +2095,9 @@ InstructionCost getInstructionCompCost(const Instruction *I,
             break;
           case Intrinsic::pow:
             OpcodeName = "pow";
+            break;
+          case Intrinsic::fmuladd:
+            OpcodeName = "fmuladd";
             break;
           default: {
             std::string msg = "Custom cost model: unsupported intrinsic " +
